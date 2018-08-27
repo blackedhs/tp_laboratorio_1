@@ -32,8 +32,6 @@ int main()
     float numeroA;
     float numeroB;
     float resultado;
-    float factorialA;
-    float factorialB;
 
     printf("Ingrese el primer numero:");
     scanf("%f",&numeroA);
