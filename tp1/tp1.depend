@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1535341205 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp_laboratorio_1/tp1/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1535341040 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp_laboratorio_1/tp1/funciones.c
+
+1535341067 /home/blackedhs/Programacion/tp_laboratorio_1/tp_laboratorio_1/tp1/funciones.h
+

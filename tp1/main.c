@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "funciones.h"
 /*Enunciado
 Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:
 1. Ingresar 1er operando (A=x)
@@ -28,12 +29,29 @@ que contenga las funciones para realizar las cinco operaciones.
 
 int main()
 {
-    int numeroA;
-    int numeroB;
-    int resultado;
-    int factorialA;
-    int factorialB;
+    float numeroA;
+    float numeroB;
+    float resultado;
+    float factorialA;
+    float factorialB;
 
-    printf("Hello world!\n");
+    printf("Ingrese el primer numero:");
+    scanf("%f",&numeroA);
+    printf("Ingrese el segundo numero:");
+    scanf("%f",&numeroB);
+    resultado=sumaDosNumeros(numeroA, numeroB);
+    printf("El resultado de la suma es: %.2f\n",resultado);
+    resultado=restaDosNumeros(numeroA,numeroB);
+    printf("El resultado de la resta es: %.2f\n",resultado);
+    resultado=divideDosNumeros(numeroA,numeroB);
+    if (resultado==0){
+        printf("No se puede dividir por cero\n");
+    }else {
+        printf("El resultado de la division es: %.2f\n",resultado);
+    }
+    resultado=calculaFactorial(numeroA);
+    printf("El factorial de %.2f es : %.2f\n",numeroA,resultado);
+    resultado=calculaFactorial(numeroB);
+    printf("El factorial de %.2f es : %.2f\n",numeroB,resultado);
     return 0;
 }
