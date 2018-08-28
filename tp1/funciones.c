@@ -18,6 +18,11 @@ float divideDosNumeros(float a,float b){
     resultado=a/b;
     return (resultado);
 }
+float multiplicaDosNumeros(float a,float b){
+    float resultado;
+    resultado=a*b;
+    return (resultado);
+}
 float calculaFactorial(float a){
     float resultado;
     int factorial;
