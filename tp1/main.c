@@ -37,24 +37,13 @@ int main()
     float resta;
     float division;
     float multiplicacion;
-    float factorialA;
-    float factorialB;
+    int factorialA;
+    int factorialB;
 
     numeroA=0;
     numeroB=0;
     while (salida=='n'){
-        printf("1. Ingresar 1er operando (A=%.2f)\n",numeroA);
-        printf("2. Ingresar 2do operando (B=%.2f)\n",numeroB);
-        printf("3. Calcular todas las operaciones siguentes:\n");
-        printf("\t a). Calcular la suma\n");
-        printf("\t b) Calcular la resta (A-B)\n");
-        printf("\t c) Calcular la division (A/B)\n");
-        printf("\t d) Calcular la multiplicacion (A*B)\n");
-        printf("\t e) Calcular el factorial (A!)\n");
-        printf("4. Informar los resultados\n");
-        printf("5. Salir\n");
-        printf("INGRESE UNA OPCION :\n");
-        scanf("%d",&respuesta);
+        respuesta=mostrarMenu(numeroA,numeroB);
         switch (respuesta){
             case 1:
                 printf("Ingrese el primer operando:");
@@ -81,7 +70,20 @@ int main()
                     printf("El resultado de la division es: %.2f\n",division);
                 }
                 printf("El resultado de la multiplicacion es: %.2f\n",multiplicacion);
-                printf("El factorial de %.2f es : %.2f y el factorial de %.2f es :%.2f\n",numeroA,factorialA,numeroB,factorialB);
+                if (factorialA==0&&factorialB==0){
+                    printf("Error con el numero %.2f --No se puede factorizar un numero decimal o negativo\n",numeroA);
+                    printf("Error con el numero %.2f --No se puede factorizar un numero decimal o negativo\n",numeroB);
+                }
+                else if (factorialA==0){
+                    printf("Error con el numero %.2f --No se puede factorizar un numero decimal o negativo\n",numeroA);
+                    printf("El factorial de %d es : %d \n",(int)numeroB,factorialB);
+                }
+                else if (factorialB==0){
+                    printf("Error con el numero %.2f --No se puede factorizar un numero decimal o negativo\n",numeroB);
+                    printf("El factorial de %d es : %d \n",(int)numeroA,factorialA);
+                }
+                else
+                    printf("El factorial de %d es : %d y el factorial de %d es :%d\n",(int)numeroA,factorialA,(int)numeroB,factorialB);
                 break;
             case 5:
                 salida='s';

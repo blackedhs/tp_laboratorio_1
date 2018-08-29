@@ -4,6 +4,8 @@ float restaDosNumeros(float a,float b);
 
 float divideDosNumeros(float a,float b);
 
-float calculaFactorial(float a);
+int calculaFactorial(float a);
 
 float multiplicaDosNumeros(float a,float b);
+
+int mostrarMenu(float numeroA,float numeroB);

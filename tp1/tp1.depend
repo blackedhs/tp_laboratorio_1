@@ -8,12 +8,13 @@
 
 1535341067 /home/blackedhs/Programacion/tp_laboratorio_1/tp_laboratorio_1/tp1/funciones.h
 
-1535425093 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.c
+1535513070 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.c
+	<stdio.h>
 
-1535425461 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/main.c
+1535513538 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"
 
-1535425091 /home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.h
+1535513115 /home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.h
 
