@@ -45,11 +45,11 @@ int main()
                 else
                     printf("La division de los operandos es A/B: %.2f\n",division);
                 if (factorialA==0)
-                    printf("A :No se puede calcular factorial de cero o numero negativo\n");
+                    printf("A :No se puede calcular factorial de numeros decimales o negativo\n");
                 else
                     printf("El factorial de A es: %lu\n",factorialA);
                 if (factorialB==0)
-                    printf("B: No se puede calcular factorial de cero o numero negativo\n");
+                    printf("B: No se puede calcular factorial de numeros decimales o negativo\n");
                 else
                     printf("El factorial de B es: %lu\n\n",factorialB);
                 printf("Pulse una tecla para continuar...\n");
