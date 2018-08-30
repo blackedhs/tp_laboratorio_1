@@ -8,8 +8,8 @@
 
 1535341067 /home/blackedhs/Programacion/tp_laboratorio_1/tp_laboratorio_1/tp1/funciones.h
 
-1535513070 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.c
-	<stdio.h>
+1535607466 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.c
+	<stdio_ext.h>
 
 1535513538 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/main.c
 	<stdio.h>

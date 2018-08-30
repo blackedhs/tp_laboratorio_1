@@ -1,48 +1,61 @@
-// suma dos numeros devuelve el resultado
-float sumaDosNumeros(float a, float b){
-    float resultado;
-    resultado=a+b;
-    return (resultado);
+#include <stdio_ext.h>
+//suma x cantidad de numeros float.
+//parametros (array,cantidad de numeros en el array,
+//direccion de variable donde guardar resultado)
+int sumaNumeros(float numeros[],int cantidad,float *resultado){
+    float sumas;
+    cantidad--;
+    for(sumas=0;cantidad>=0;cantidad--){
+        sumas+=numeros[cantidad];
+    }
+    *resultado=sumas;
+    return 0;
 }
-// resta de dos numeros
-float restaDosNumeros(float a,float b){
-    float resultado;
-    resultado=a-b;
-    return (resultado);
+//resta dos float A-B
+int restaDosNumeros(float numeros[],int primerNumero,int segundoNumero,float*resultado){
+    float resta;
+    resta=numeros[primerNumero]-numeros[segundoNumero];
+    *resultado=resta;
+    return 0;
 }
-// division de dos numeros
-float divideDosNumeros(float a,float b){
-    float resultado;
-    if (b==0)
-        return 0;
-    resultado=a/b;
-    return (resultado);
+//multiplica x cantidad de numeros
+int multiplicaNumeros(float numeros[],int cantidad,float *resultado){
+    float multiplicacion;
+    cantidad--;
+    for(multiplicacion=1;cantidad>=0;cantidad--){
+        multiplicacion*=numeros[cantidad];
+    }
+    *resultado=multiplicacion;
+    return 0;
 }
-//mulplicacion de dos nuemos
-float multiplicaDosNumeros(float a,float b){
-    float resultado;
-    resultado=a*b;
-    return (resultado);
-}
-//calcular factorial
-int calculaFactorial(float a){
-    int resultado;
-    float textFactorial;
+int divideDosNumeros(float numeros[],int dividendo,int divisor,float *resultado){
+    float division;
 
-    if(a<0)
-        return 0;
-    textFactorial=(int)a-a;
-    if (textFactorial<0)
-        return 0;
-    else if(a==0||a==1)
-        return 1;
-    resultado=a*calculaFactorial(a-1);
-    return (resultado);
+    if (numeros[divisor]==0)
+        division=0;
+    else
+        division=numeros[dividendo]/numeros[divisor];
+    *resultado=division;
+    return 0;
 }
-//muestra el menu
-int mostrarMenu(float numeroA,float numeroB){
-        #include <stdio.h>
-        int respuesta;
+int calcularFactorial(float numeros[],int ubicacion,int unsigned long *resultado){
+    int unsigned long factorial=1;
+    int i;
+    if (numeros[ubicacion]<0||numeros[ubicacion]!=(int)numeros[ubicacion])
+        factorial=0;
+    else if(numeros[ubicacion]==0||numeros[ubicacion]==1)
+        factorial=1;
+    else{
+        factorial=numeros[ubicacion];
+        for (i=numeros[ubicacion];i>0;i--){
+            factorial=factorial*i;
+        }
+    }
+    *resultado=factorial;
+    return 0;
+}
+int mostrarMenu(float numeroA,float numeroB,int *respuesta){
+        int opcion;
         printf("1. Ingresar 1er operando (A=%.2f)\n",numeroA);
         printf("2. Ingresar 2do operando (B=%.2f)\n",numeroB);
         printf("3. Calcular todas las operaciones siguentes:\n");
@@ -54,7 +67,25 @@ int mostrarMenu(float numeroA,float numeroB){
         printf("4. Informar los resultados\n");
         printf("5. Salir\n");
         printf("INGRESE UNA OPCION :\n");
-        if (scanf("%d",&respuesta)!=1)
-            mostrarMenu(numeroA,numeroB);
-        return(respuesta);
+        if (scanf("%d",&opcion)!=1||(opcion<1||opcion>5)){
+            __fpurge(stdin);
+            system("clear");
+            printf("ERRO, INGRESE UNA OPCION ENTRE [1-5]\n\n");
+            mostrarMenu(numeroA,numeroB,&opcion);
+        }
+        system("clear");
+        *respuesta=opcion;
+        return 0;
+}
+int verificaNumeroFloat(float *resultado){
+    float numeroFloat;
+    printf("Ingrese un operando;\n");
+    while(scanf("%f",&numeroFloat)!=1){
+        __fpurge(stdin);
+        system("clear");
+        printf("ERROR, POR FAVOR INGRESE SOLO NUMEROS\n\n");
+        printf("Ingrese el 1er operando;\n");
+    }
+    *resultado=numeroFloat;
+    return 0;
 }
