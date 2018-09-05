@@ -1,7 +1,6 @@
 #include <stdio_ext.h>
-//suma x cantidad de numeros float.
-//parametros (array,cantidad de numeros en el array,
-//direccion de variable donde guardar resultado)
+#include <stdlib.h>
+
 int sumaNumeros(float numeros[],int cantidad,float *resultado){
     float sumas;
     cantidad--;
@@ -30,13 +29,14 @@ int multiplicaNumeros(float numeros[],int cantidad,float *resultado){
 }
 int divideDosNumeros(float numeros[],int dividendo,int divisor,float *resultado){
     float division;
+    int retorno=0;
 
     if (numeros[divisor]==0)
-        division=0;
+        retorno=-1;
     else
         division=numeros[dividendo]/numeros[divisor];
     *resultado=division;
-    return 0;
+    return retorno;
 }
 int calcularFactorial(float numeros[],int ubicacion,int unsigned long *resultado){
     int unsigned long factorial=1;
@@ -59,7 +59,7 @@ int mostrarMenu(float numeroA,float numeroB,int *respuesta){
         printf("1. Ingresar 1er operando (A=%.2f)\n",numeroA);
         printf("2. Ingresar 2do operando (B=%.2f)\n",numeroB);
         printf("3. Calcular todas las operaciones siguentes:\n");
-        printf("\t a). Calcular la suma\n");
+        printf("\t a) Calcular la suma\n");
         printf("\t b) Calcular la resta (A-B)\n");
         printf("\t c) Calcular la division (A/B)\n");
         printf("\t d) Calcular la multiplicacion (A*B)\n");
@@ -84,7 +84,7 @@ int verificaNumeroFloat(float *resultado){
         __fpurge(stdin);
         system("clear");
         printf("ERROR, POR FAVOR INGRESE SOLO NUMEROS\n\n");
-        printf("Ingrese el 1er operando;\n");
+        printf("Ingrese el operando;\n");
     }
     *resultado=numeroFloat;
     return 0;

@@ -12,6 +12,7 @@ int main()
     int unsigned long factorialA;
     int unsigned long factorialB;
     int opcion;
+    int banderaCalculos=0;
 
     numeros[0]=0;
     numeros[1]=0;
@@ -27,6 +28,7 @@ int main()
                 system("clear");
                 break;
             case 3:
+                banderaCalculos++;
                 sumaNumeros(numeros,2,&suma);
                 restaDosNumeros(numeros,0,1,&resta);
                 multiplicaNumeros(numeros,2,&multiplicacion);
@@ -36,11 +38,19 @@ int main()
                 break;
             case 4:
                 system("clear");
+                if(banderaCalculos==0){
+                    printf("Primero debe realizar los calculos (opcion 3)\n");
+                    printf("Pulse una tecla para continuar...\n");
+                    getchar();
+                    getchar();
+                    system("clear");
+                    break;
+                }
                 printf("A= %.2f    B= %.2f\n",numeros[0],numeros[1]);
                 printf("La suma de los operandos es A+B: %.2f \n",suma);
                 printf("La resta de los operandos es A-B: %.2f \n",resta);
                 printf("La multiplicacion de los operandos es A*B: %.2f \n",multiplicacion);
-                if (division==0)
+                if (divideDosNumeros(numeros,0,1,&division)==-1)
                     printf("No se puede dividir por cero \n");
                 else
                     printf("La division de los operandos es A/B: %.2f\n",division);

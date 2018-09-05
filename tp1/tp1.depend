@@ -8,13 +8,14 @@
 
 1535341067 /home/blackedhs/Programacion/tp_laboratorio_1/tp_laboratorio_1/tp1/funciones.h
 
-1535607466 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.c
+1536119234 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.c
 	<stdio_ext.h>
-
-1535513538 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/main.c
-	<stdio.h>
 	<stdlib.h>
-	"funciones.h"
+
+1536117431 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp1/main.c
+	<stdio_ext.h>
+	<stdlib.h>
+	"biblotecaFunciones.h"
 
 1535513115 /home/blackedhs/Programacion/tp_laboratorio_1/tp1/funciones.h
 
@@ -27,4 +28,6 @@
 	"biblotecaFunciones.h"
 
 1535665218 /home/alumno/Escritorio/fede/tp_laboratorio_1/tp1/biblotecaFunciones.h
+
+1536119178 /home/blackedhs/Programacion/tp_laboratorio_1/tp1/biblotecaFunciones.h
 
