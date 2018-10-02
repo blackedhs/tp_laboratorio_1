@@ -18,6 +18,13 @@ int main()
     float promedio;
     int cantidadMayorAlPromedio;
     emp_inicializarArray(employees,CANTIDADEMPLOYEES);
+    emp_alta(employees,emp_obtenerID(),CANTIDADEMPLOYEES,"fede","andrade",400,2);
+    emp_alta(employees,emp_obtenerID(),CANTIDADEMPLOYEES,"luis","enrique",300,1);
+    emp_alta(employees,emp_obtenerID(),CANTIDADEMPLOYEES,"fede","migual",200,1);
+    emp_alta(employees,emp_obtenerID(),CANTIDADEMPLOYEES,"paola","semedo",1200,1);
+    emp_alta(employees,emp_obtenerID(),CANTIDADEMPLOYEES,"jorge","andrade",300,3);
+    emp_alta(employees,emp_obtenerID(),CANTIDADEMPLOYEES,"lucas","pintos",1300,0);
+    emp_alta(employees,emp_obtenerID(),CANTIDADEMPLOYEES,"fernanda","pintos",5020,4);
     do{
         system("clear");
         menu(&opcion);
@@ -42,9 +49,11 @@ int main()
                 }
                 break;
             case 4:
-                emp_ordenarByLastNameOrSector(employees,CANTIDADEMPLOYEES,0);
+                emp_ordenarByLastNameOrSector(employees,CANTIDADEMPLOYEES,1);
+                emp_imprimir(employees,CANTIDADEMPLOYEES);
                 emp_totalPromedioYMayoresAlPromedio(employees,CANTIDADEMPLOYEES,&cantidadMayorAlPromedio,&total,&promedio);
-                printf("\nEl total es: %.2f\t y el promedio es %.2f\nLa cantidad de salarios matyores al promedio son: %d",total,promedio,cantidadMayorAlPromedio);
+                printf("\nEl total es: %.2f\t y el promedio es %.2f\nLa cantidad de salarios mayores al promedio son: %d",total,promedio,cantidadMayorAlPromedio);
+                getchar();
                 break;
         }
     }while(opcion!=5);

@@ -42,7 +42,7 @@ int emp_alta(Employee* pBuffer,int id,int limite,char* name,char* lastName,float
 }
 int emp_modificarById(Employee* pBuffer,int limite,int id){
     int i;
-    int auxSector;
+    int auxSector,opcion;
     char auxName[51];
     char auxLastName[51];
     float auxSalary;
@@ -51,16 +51,31 @@ int emp_modificarById(Employee* pBuffer,int limite,int id){
         for (i=0;i<limite;i++){
             if(pBuffer[i].id==id&& pBuffer[i].isEmpty==0){
                 retorno=0;
-                if(utn_getLetras(auxName,CANTIDADEMPLOYEES,3,"\nIngrese el nombre: ","\nError...Ingrese un nombre valido")==0&&
-                utn_getLetras(auxLastName,CANTIDADEMPLOYEES,3,"\nIngrese el apellido: ","\nError...Ingrese un apellido valido")==0&&
-                utn_getFloat(&auxSalary,3,"\nIngrese el salario: ","\nError...Ingrese un salario valio",0,999999)==0&&
-                utn_getEntero(&auxSector,3,"\nIngrese el sector: ","\nError...Ingrese un sector valido",1,3)==0){
-                    strcpy(pBuffer[i].lastname,auxLastName);
-                    strcpy(pBuffer[i].name,auxName);
-                    pBuffer[i].salary=auxSalary;
-                    pBuffer[i].sector=auxSector;
-                    break;
+                if(utn_getEntero(&opcion,3,"\n1-Modificar nombre\n2-Modificar Apellido\n3-Modificar salario\n4-Modificar sector\nINGRESE UNA OPCION: ","ERROR...Ingrese una opcion valida",1,4)==0){
+                    switch (opcion){
+                        case 1:
+                            if(utn_getLetras(auxName,CANTIDADEMPLOYEES,3,"\nIngrese el nombre: ","\nError...Ingrese un nombre valido")==0){
+                                strcpy(pBuffer[i].name,auxName);
+                            }
+                            break;
+                        case 2:
+                            if(utn_getLetras(auxLastName,CANTIDADEMPLOYEES,3,"\nIngrese el apellido: ","\nError...Ingrese un apellido valido")==0){
+                                strncpy(pBuffer[i].lastname,auxLastName,51);
+                            }
+                            break;
+                        case 3:
+                            if(utn_getFloat(&auxSalary,3,"\nIngrese el salario: ","\nError...Ingrese un salario valio",0,999999)==0){
+                                pBuffer[i].salary=auxSalary;
+                            }
+                            break;
+                        case 4:
+                            if(utn_getEntero(&auxSector,3,"\nIngrese el sector: ","\nError...Ingrese un sector valido",1,3)==0){
+                                pBuffer[i].sector=auxSector;
+                            }
+                            break;
+                    }
                 }
+                break;
             }
         }
     }
@@ -90,7 +105,7 @@ int emp_swap(Employee* pBuffer,int indiceDestino,int indiceOrigen){
         strcpy(pBuffer[indiceDestino].lastname,pBuffer[indiceOrigen].lastname);
         strcpy(pBuffer[indiceDestino].name,pBuffer[indiceOrigen].name);
         pBuffer[indiceDestino].salary=pBuffer[indiceOrigen].salary;
-        pBuffer[indiceDestino].id=pBuffer[indiceOrigen].salary;
+        pBuffer[indiceDestino].id=pBuffer[indiceOrigen].id;
         pBuffer[indiceDestino].sector=pBuffer[indiceOrigen].sector;
         pBuffer[indiceDestino].isEmpty=pBuffer[indiceOrigen].isEmpty;
 
@@ -114,13 +129,13 @@ int emp_ordenarByLastNameOrSector(Employee* pBuffer,int limite,int flag){
                 if((flag== 0 &&strcmp(pBuffer[i].lastname,pBuffer[i+1].lastname)<0)||
                     (flag==1&& strcmp(pBuffer[i].lastname,pBuffer[i+1].lastname)>0)){
                         emp_swap(pBuffer,i,i+1);
-                        flag=1;
+                        flagOrden=1;
                         retorno=0;
                 }else
                 if(strcmp(pBuffer[i].lastname,pBuffer[i+1].lastname)==0&&(
                     (flag== 0 && pBuffer[i].sector<pBuffer[i+1].sector)||
                     (flag== 1 && pBuffer[i].sector>pBuffer[i+1].sector))){
-                        flag=1;
+                        flagOrden=1;
                         retorno=0;
                         emp_swap(pBuffer,i,i+1);
                 }

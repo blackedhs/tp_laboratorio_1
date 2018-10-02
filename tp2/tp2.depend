@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1538338200 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp2/lib.c
+1538512087 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp2/lib.c
 	<stdio_ext.h>
 	<stdlib.h>
 	<string.h>
@@ -9,14 +9,14 @@
 
 1537651774 /home/blackedhs/Programacion/tp_laboratorio_1/tp2/utn.h
 
-1538338218 /home/blackedhs/Programacion/tp_laboratorio_1/tp2/lib.h
+1538338908 /home/blackedhs/Programacion/tp_laboratorio_1/tp2/lib.h
 	<stdio_ext.h>
 	<stdlib.h>
 	<string.h>
 	<time.h>
 	"utn.h"
 
-1538338381 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp2/main.c
+1538509489 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp2/main.c
 	<stdio_ext.h>
 	<stdlib.h>
 	<string.h>
@@ -31,7 +31,7 @@
 	<time.h>
 	"utn.h"
 
-1538334025 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp2/MAQUETA.c
+1538338989 source:/home/blackedhs/Programacion/tp_laboratorio_1/tp2/MAQUETA.c
 	<stdio_ext.h>
 	<stdlib.h>
 	<string.h>
