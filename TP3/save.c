@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Employee.h"
+/** \brief Guarda los datos del linkedList en modo texto
+ * \param pFile FILE* puntero al archivo destino
+ * \param pArrayListEmployee LinkedList* puntero a linkedlist
+ * \return 0 todo bien -1 error
+ */
 int save_EmployeesAsText(FILE* pFile,LinkedList* pArrayListEmployee){
     int retorno=-1;
     int i=0;
@@ -29,6 +34,11 @@ int save_EmployeesAsText(FILE* pFile,LinkedList* pArrayListEmployee){
     }
 return retorno;
 }
+/** \brief Guarda los datos del linkedList en modo binario
+ * \param pFile FILE* puntero al archivo destino
+ * \param pArrayListEmployee LinkedList* puntero a linkedlist
+ * \return 0 todo bien -1 error
+ */
 int save_EmployeesAsBin(FILE* pArchivo,LinkedList* pArrayListEmployee){
     int retorno=-1;
     int i;
@@ -40,6 +50,9 @@ int save_EmployeesAsBin(FILE* pArchivo,LinkedList* pArrayListEmployee){
             empleado=ll_get(pArrayListEmployee,i);
             if(empleado!= NULL)
                 fwrite(empleado,sizeof(Employee),1,pArchivo);
+        }
+        if(i==len){
+            retorno=0;
         }
     }
     return retorno;

@@ -23,4 +23,6 @@ int Employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
 int Employee_setSueldo(Employee* this,int sueldo);
 int Employee_getSueldo(Employee* this,int* sueldo);
 
+int Employee_validarEmpleado(Employee* pEmpleado);
+
 #endif // EMPLOYEE_H_INCLUDED

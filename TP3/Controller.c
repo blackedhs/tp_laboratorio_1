@@ -11,9 +11,9 @@
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ * \param path char* nombre del archivo a cargar
+ * \param pArrayListEmployee LinkedList* puntero a linkedlist
+ * \return int 0 todo ok -1 hubo un error
  *
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
@@ -25,6 +25,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
         if(pArchivo != NULL){
             parser_EmployeeFromText(pArchivo,pArrayListEmployee);
             fclose(pArchivo);
+            retorno=0;
         }else{
             printf("No se pudo abrir el archivo...");
         }
@@ -34,9 +35,9 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+* \param path char* nombre del archivo a cargar
+ * \param pArrayListEmployee LinkedList* puntero a linkedlist
+ * \return int 0 todo ok -1 hubo un error
  *
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
@@ -47,6 +48,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
         pFile=fopen(path,"rb");
         if(pFile!=NULL){
             parser_EmployeeFromBinary(pFile,pArrayListEmployee);
+            retorno=0;
         }else{
             printf("\nEl archivo no pudo abrirse");
         }
@@ -57,9 +59,8 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Alta de empleados
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ * \param pArrayListEmployee LinkedList* puntero a linkedList
+ * \return int 0 alta exitosa -1 error
  *
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
@@ -89,9 +90,8 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Modificar datos de empleado
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ * \param pArrayListEmployee LinkedList* puntero a linkedList
+ * \return int 0 alta exitosa -1 error
  *
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
@@ -127,9 +127,9 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Baja de empleado
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ *
+ * \param pArrayListEmployee LinkedList* puntero a linkedList
+ * \return int 0 alta exitosa -1 error (id mal ingresado o no existe)
  *
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
@@ -157,9 +157,9 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Listar empleados
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ *
+ * \param pArrayListEmployee LinkedList* puntero a linkedList
+ * \return int 0 alta exitosa -1 error
  *
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
@@ -187,7 +187,13 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     }
     return retorno;
 }
-
+/** \brief Compara dos nombres
+ *
+ * \param thisA void* puntero a la estructura del primer nombre
+ * \param thisB void* puntero a la estructura del segundo nombre
+ * \return -1 thisA mayor / 1 thisB mayor / 0 son iguales
+ *
+ */
 int controller_compararByName(void* thisA, void* thisB){
     char bufferNameA[100];
     char bufferNameB[100];
@@ -206,23 +212,25 @@ int controller_compararByName(void* thisA, void* thisB){
 
 /** \brief Ordenar empleados
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ * \param pArrayListEmployee LinkedList* puntero a linkedList
+ * \return int 0 alta exitosa -1 error
  *
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     int retorno=-1;
-    ll_sort(pArrayListEmployee,controller_compararByName,0);
+    if(pArrayListEmployee != NULL){
+        ll_sort(pArrayListEmployee,controller_compararByName,0);
+        retorno=0;
+    }
     return retorno;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ * \param path char* nombre del archivo a cargar
+ * \param pArrayListEmployee LinkedList* puntero a linkedlist
+ * \return int 0 todo ok -1 hubo un error
  *
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
@@ -245,9 +253,9 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
  *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
+ * \param path char* nombre del archivo a cargar
+ * \param pArrayListEmployee LinkedList* puntero a linkedlist
+ * \return int 0 todo ok -1 hubo un error
  *
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)

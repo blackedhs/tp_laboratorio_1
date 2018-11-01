@@ -36,6 +36,8 @@ int main()
                 if(!flagTexto && !flagBin){
                     listaEmpleados = ll_newLinkedList();
                     controller_loadFromText("data.csv",listaEmpleados);
+                    printf("\nLos datos fueron cargados correctamente..");
+                    getchar();
                     flagTexto=1;
                 }else{
                     system("clear");
@@ -47,6 +49,8 @@ int main()
                 if(!flagTexto && !flagBin){
                     listaEmpleados = ll_newLinkedList();
                     controller_loadFromBinary("data.bin",listaEmpleados);
+                    printf("\nLos datos fueron cargados correctamente..");
+                    getchar();
                     flagBin=1;
                 }else{
                     system("clear");
@@ -136,14 +140,14 @@ int main()
 void main_menu(int* option){
     printf("\n****************************************************\nMenu:\n\
 1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n\
-2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).\n\
+2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n\
 3. Alta de empleado\n\
 4. Modificar datos de empleado\n\
 5. Baja de empleado\n\
 6. Listar empleados\n\
 7. Ordenar empleados\n\
 8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n\
-9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n\
+9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n\
 10. Salir\n\
 *****************************************************/\n");
     utn_getEntero(option,3,"INGRESE UNA OPCION :  ","Error...Ingrese una opion valida",1,10);
