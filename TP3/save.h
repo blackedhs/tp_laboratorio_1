@@ -5,6 +5,6 @@
 #include "LinkedList.h"
 #include "Employee.h"
 int save_EmployeesAsText(FILE* pFile,LinkedList* pArrayListEmployee);
-
+int save_EmployeesAsBin(FILE* pArchivo,LinkedList* pArrayListEmployee);
 
 #endif // SAFE_H_INCLUDED

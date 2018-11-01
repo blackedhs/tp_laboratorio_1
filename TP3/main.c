@@ -33,10 +33,21 @@ int main()
         switch(option)
         {
             case 1:
-                if(!flagTexto){
+                if(!flagTexto && !flagBin){
                     listaEmpleados = ll_newLinkedList();
                     controller_loadFromText("data.csv",listaEmpleados);
                     flagTexto=1;
+                }else{
+                    system("clear");
+                    printf("Los datos de emplados ya fueron cargados..");
+                    getchar();
+                }
+                break;
+            case 2:
+                if(!flagTexto && !flagBin){
+                    listaEmpleados = ll_newLinkedList();
+                    controller_loadFromBinary("data.bin",listaEmpleados);
+                    flagBin=1;
                 }else{
                     system("clear");
                     printf("Los datos de emplados ya fueron cargados..");
@@ -86,6 +97,8 @@ int main()
                 }
                 break;
             case 7:
+                controller_sortEmployee(listaEmpleados);
+                break;
             case 8:
                 if(!flagBin && !flagTexto && !flagAdd){
                       system("clear");
@@ -102,6 +115,19 @@ int main()
                 }
                 break;
             case 9:
+                if(!flagBin && !flagTexto && !flagAdd){
+                      system("clear");
+                      printf("No hay datos cargados..");
+                      getchar();
+                }else if(!controller_saveAsBinary("data.bin",listaEmpleados)){
+                    ll_deleteLinkedList(listaEmpleados);
+                    flagTexto=0;
+                    flagBin=0;
+                    flagAdd=0;
+                }else{
+                    printf("Error al guardar...");
+                    getchar();
+                }
                 break;
         }
     }while(option != 10);

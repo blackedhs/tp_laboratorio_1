@@ -29,4 +29,18 @@ int save_EmployeesAsText(FILE* pFile,LinkedList* pArrayListEmployee){
     }
 return retorno;
 }
-
+int save_EmployeesAsBin(FILE* pArchivo,LinkedList* pArrayListEmployee){
+    int retorno=-1;
+    int i;
+    int len= ll_len(pArrayListEmployee);
+    Employee* empleado;
+    if(pArchivo != NULL && pArrayListEmployee!= NULL){
+        retorno=0;
+        for(i=0;i<len;i++){
+            empleado=ll_get(pArrayListEmployee,i);
+            if(empleado!= NULL)
+                fwrite(empleado,sizeof(Employee),1,pArchivo);
+        }
+    }
+    return retorno;
+}

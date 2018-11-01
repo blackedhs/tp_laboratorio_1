@@ -1,6 +1,7 @@
 #include "save.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Employee.h"
 #include "utn.h"
@@ -40,7 +41,18 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno=-1;
+    FILE* pFile;
+    if(path!=NULL && pArrayListEmployee!=NULL){
+        pFile=fopen(path,"rb");
+        if(pFile!=NULL){
+            parser_EmployeeFromBinary(pFile,pArrayListEmployee);
+        }else{
+            printf("\nEl archivo no pudo abrirse");
+        }
+
+    }
+    return retorno;
 }
 
 /** \brief Alta de empleados
@@ -176,6 +188,22 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     return retorno;
 }
 
+int controller_compararByName(void* thisA, void* thisB){
+    char bufferNameA[100];
+    char bufferNameB[100];
+    int result;
+    Employee_getNombre(thisA,bufferNameA);
+    Employee_getNombre(thisB,bufferNameB);
+    if(strcmp(bufferNameA,bufferNameB)<0){
+        result=-1;
+    }else if(strcmp(bufferNameA,bufferNameB)>0){
+        result=1;
+    }else{
+        result=0;
+    }
+    return result;
+}
+
 /** \brief Ordenar empleados
  *
  * \param path char*
@@ -186,32 +214,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     int retorno=-1;
-    LinkedList* auxList;
-    Employee* empleado1;
-    Employee* empleado2;
-    char nombre1[50];
-    char nombre2[50];
-    int flag;
-    int len;
-    int i;
-    if(pArrayListEmployee!= NULL){
-        len=ll_len(pArrayListEmployee);
-        do{
-            flag=0;
-            for(i=0;i<len-1;i++){
-                empleado1=(Employee*)ll_get(pArrayListEmployee,i);
-                empleado2=(Employee*)ll_get(pArrayListEmployee,i+1);
-                Employee_getNombre(empleado1,nombre1);
-                Employee_getNombre(empleado2,nombre2);
-                if(strcmp(nombre1,nombre2)<0){
-                    auxList=pArrayListEmployee[i+1];
-                    pArrayListEmployee[i+1]=pArrayListEmployee[i];
-                    pArrayListEmployee[i]=*auxList;
-                    flag=1;
-                }
-            }
-        }while(flag);
-    }
+    ll_sort(pArrayListEmployee,controller_compararByName,0);
     return retorno;
 }
 
@@ -249,6 +252,19 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE*pArchivo;
+    int retorno=-1;
+    if(path != NULL && pArrayListEmployee != NULL){
+        pArchivo=fopen(path,"wb");
+        if(pArchivo != NULL && !save_EmployeesAsBin(pArchivo,pArrayListEmployee)){
+            fclose(pArchivo);
+            printf("Guardado exitoso");
+            getchar();
+            retorno=0;
+        }else{
+            printf("No se pudo abrir el archivo...");
+        }
+    }
+    return retorno;
 }
 
