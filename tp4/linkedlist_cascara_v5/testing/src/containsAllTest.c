@@ -70,7 +70,6 @@ void containsAllTestCase02(void)
         ll_add(list,pAux[i]);
         ll_add(pOtherList,pAux[i]);
     }
-
     ll_remove(list,0);
 
     r = ll_containsAll(list,pOtherList);
