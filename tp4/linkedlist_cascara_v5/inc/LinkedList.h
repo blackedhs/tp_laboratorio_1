@@ -28,6 +28,7 @@ struct LinkedList
 {
     Node* pFirstNode;
     int size;
+    Node* pNodeIter;
 }typedef LinkedList;
 #endif
 
@@ -53,3 +54,5 @@ int ll_containsAll(LinkedList* this,LinkedList* this2);
 LinkedList* ll_subList(LinkedList* this,int from,int to);
 LinkedList* ll_clone(LinkedList* this);
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
+void mapeo(LinkedList* this,int (*pFunc)(void*));
+void* filter(LinkedList* this,int(*pFunc)(void*));

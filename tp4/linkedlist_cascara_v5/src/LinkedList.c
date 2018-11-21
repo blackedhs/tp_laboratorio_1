@@ -6,6 +6,8 @@
 
 static Node* getNode(LinkedList* this, int nodeIndex);
 static int addNode(LinkedList* this, int nodeIndex,void* pElement);
+static void* startIter(LinkedList* this);
+static void* nextNodeIter(LinkedList* this);
 
 /** \brief Crea un nuevo LinkedList en memoria de manera dinamica
  *
@@ -523,4 +525,47 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 
 }
-
+static void* startIter(LinkedList* this){
+    if(this!= NULL){
+        this->pNodeIter=this->pFirstNode;
+        return this->pNodeIter;
+    }
+    return NULL;
+}
+static void* nextNodeIter(LinkedList* this){
+    Node* pNode;
+    if(this!=NULL){
+        pNode=this->pNodeIter;
+        this->pNodeIter=pNode->pNextNode;
+        return this->pNodeIter;
+    }
+    return NULL;
+}
+void mapeo(LinkedList* this,int(*pFunc)(void*)){
+    Node* pNode;
+    if(this!= NULL && pFunc != NULL){
+        pNode=startIter(this);
+        if(pNode!=NULL){
+            do{
+                pFunc(pNode->pElement);
+                pNode=nextNodeIter(this);
+            }while(pNode!=NULL);
+        }
+    }
+}
+void* filter(LinkedList* this,int(*pFunc)(void*)){
+    Node* pNode;
+    LinkedList* pLink=ll_newLinkedList();
+    if(this!= NULL && pFunc != NULL && pLink!=NULL){
+        pNode=startIter(this);
+        if(pNode!=NULL){
+            do{
+                if(pFunc(pNode->pElement)){
+                    ll_add(pLink,pNode->pElement);
+                }
+                pNode=nextNodeIter(this);
+            }while(pNode!=NULL);
+        }
+    }
+    return pLink;
+}
