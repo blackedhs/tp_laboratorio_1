@@ -525,6 +525,10 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 
 }
+/** \brief devuelve el puntero al primer nodo de la lista
+ * \param pList LinkedList* Puntero a la lista
+ * \return void* Retorna NULL si la lista esta vacia o no existe la lista
+ */
 static void* startIter(LinkedList* this){
     if(this!= NULL){
         this->pNodeIter=this->pFirstNode;
@@ -532,6 +536,10 @@ static void* startIter(LinkedList* this){
     }
     return NULL;
 }
+/** \brief devuelve el puntero al prioximo nodo de la lista
+ * \param pList LinkedList* Puntero a la lista
+ * \return void* Retorna NULL si no hay mas nodos en lista o no existe la lista
+ */
 static void* nextNodeIter(LinkedList* this){
     Node* pNode;
     if(this!=NULL){
@@ -541,7 +549,12 @@ static void* nextNodeIter(LinkedList* this){
     }
     return NULL;
 }
-void mapeo(LinkedList* this,int(*pFunc)(void*)){
+/** \brief recorre la lista pasada por parametros y le pasa los elementos a una funcion
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc* puntero a FUNCION
+ * \return void
+ */
+void mapeo(LinkedList* this,void(*pFunc)(void*)){
     Node* pNode;
     if(this!= NULL && pFunc != NULL){
         pNode=startIter(this);
@@ -553,6 +566,12 @@ void mapeo(LinkedList* this,int(*pFunc)(void*)){
         }
     }
 }
+/** \brief recorre la lista pasada por parametros y genera una nueva segun las
+            condiciones de la funcion recibida por parametros
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc* puntero a FUNCION
+ * \return void* puntero a la nueva lista filtrada
+ */
 void* filter(LinkedList* this,int(*pFunc)(void*)){
     Node* pNode;
     LinkedList* pLink=ll_newLinkedList();
